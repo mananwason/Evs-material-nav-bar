@@ -2,5 +2,7 @@
     <string name="app_name">Evs</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="drawer_opensource">Open Source</string>
+
     <string name="action_settings">Settings</string>
 </resources>
