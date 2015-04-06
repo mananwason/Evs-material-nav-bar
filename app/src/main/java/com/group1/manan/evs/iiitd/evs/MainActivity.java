@@ -1,9 +1,19 @@
 package com.group1.manan.evs.iiitd.evs;
 
+import android.app.FragmentManager;
+import android.app.Fragment;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,6 +22,56 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        //Handle toolbar
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //Handle DrawerLayout
+        DrawerLayout mdraDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+
+        //Handle ActionBarDrawerToggle
+        ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, mdraDrawerLayout, toolbar, R.string.drawer_open,R.string.drawer_close);
+        actionBarDrawerToggle.syncState();
+
+        mdraDrawerLayout.setDrawerListener(actionBarDrawerToggle);
+
+        //Drawerlist
+        LinearLayout mDrawerList = (LinearLayout) findViewById(R.id.drawerList);
+
+        //Progress Bar
+        ProgressBar mProgressBar = (ProgressBar) findViewById(R.id.progressBar);
+        mDrawerList.findViewById(R.id.drawer_pollution).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Bundle args = new Bundle();
+                Fragment pollution = new PollutionFragment();
+                pollution.setArguments(args);
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.frame, pollution).commit();
+
+
+
+            }
+
+        });
+        SwipeRefreshLayout mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_container);
+        mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.theme_accent));
+        mSwipeRefreshLayout.setRefreshing(true);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
+
+            @Override
+            public void onRefresh() {
+
+            }
+        });
+
+        mProgressBar.setVisibility(View.VISIBLE);
+
+
     }
 
 
