@@ -42,19 +42,21 @@
 
         <ImageButton
             android:id="@+id/fab_button"
+            android:transitionName="fab"
             android:layout_width="@dimen/fab_size"
             android:layout_height="@dimen/fab_size"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/toolbar"
             android:layout_marginEnd="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_below="@+id/toolbar"
             android:layout_marginTop="-28dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/button_round"
+            android:stateListAnimator="@anim/fab_anim"
             android:elevation="8dp"
             android:padding="14dp"
             android:scaleType="fitCenter"
-            android:stateListAnimator="@anim/fab_anim"
-            android:transitionName="fab" />
+             />
     </RelativeLayout>
 
     <LinearLayout
@@ -88,29 +90,30 @@
         <RelativeLayout
             android:id="@+id/drawer_pollution"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/drawer_secondary_icon"
-            android:background="@drawable/button_rect_list_secondary"
+            android:layout_height="@dimen/drawer_primary"
+            android:background="@drawable/button_rect_list_normal"
             android:clickable="true">
 
             <ImageView
-                android:id="@+id/drawer_opensource_icon"
-                android:layout_width="@dimen/drawer_secondary_icon"
+                android:id="@+id/drawer_pollution_icon"
+                android:layout_width="@dimen/drawer_primary"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp" />
+                android:layout_marginRight="12dp"
+                android:background="@drawable/button_rect_list_normal"/>
 
             <TextView
-                android:id="@+id/drawer_opensource_title"
+                android:id="@+id/drawer_pollution_title"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_toEndOf="@id/drawer_opensource_icon"
-                android:layout_toRightOf="@id/drawer_opensource_icon"
+                android:layout_toEndOf="@id/drawer_pollution_icon"
+                android:layout_toRightOf="@id/drawer_pollution_icon"
                 android:gravity="center_vertical"
                 android:minHeight="44dp"
-                android:text="@string/drawer_opensource"
+                android:text="@string/drawer_pollution"
                 android:textColor="@color/secondary"
                 android:textSize="@dimen/drawer_secondary_text"
                 android:textStyle="normal" />
